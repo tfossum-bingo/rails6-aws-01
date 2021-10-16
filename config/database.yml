@@ -23,7 +23,10 @@ default: &default
 
 development:
   <<: *default
-  database: bowlmetrix606app_development
+  database: bm6_production
+  username: postgres
+  host: postgres-01.cawdzlpmk1kv.us-east-1.rds.amazonaws.com
+  password: mypassword
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -81,6 +84,7 @@ test:
 #
 production:
   <<: *default
-  database: bowlmetrix606app_production
-  username: bowlmetrix606app
+  database: bm6_production
+  username: postgres
+  host: <%= ENV['PROD_DATABASE_HOST'] %>
   password: <%= ENV['PROD_DATABASE_PASSWORD'] %>
